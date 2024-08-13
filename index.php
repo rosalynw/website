@@ -1,7 +1,7 @@
 <?php include "includes/header.php"; ?>
 
-<html>
-    <body>
+<main>
+
         <h2>Content</h2>
         <div class="hero-image">
 
@@ -17,7 +17,7 @@
             <button type="submit">Send</button>
         </form>
     </div>
-    </body>
-</html>
+    
+</main>
 
 <?php include "includes/footer.php"; ?>
