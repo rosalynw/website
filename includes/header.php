@@ -9,7 +9,7 @@
 <body>
     <div class="header">
         <nav class="nav-container">
-            <a href="#"class="nav-links nav-left logo">Rosalyn Wimberly</a>
+            <h3><a href="#"class="nav-links nav-left logo">Rosalyn Wimberly</a></h3>
             <ul class="nav-links nav-right">
                 <li>About</li>
                 <li>Contact</li>
