@@ -1,4 +1,4 @@
-const galleryContainer =document.querySelector('.gallery-container');
+const galleryContainer = document.querySelector('.gallery-container');
 const galleryControlsContainer = document.querySelector('.gallery-controls');
 const galleryControls = ['previous', 'next'];
 const galleryItems = document.querySelectorAll('.gallery-item');
@@ -20,7 +20,7 @@ class Carousel {
     });
   }
 
-  setCurrentState(direction){
+  setCurrentState(direction) {
     if (direction.className.includes('gallery-controls-previous')) {
       this.carouselArray.unshift(this.carouselArray.pop());
     } else {
@@ -44,12 +44,62 @@ class Carousel {
       control.addEventListener('click', e => {
         e.preventDefault();
         this.setCurrentState(control);
+        this.stopAutoplay();
       });
     });
+  }
+
+  useImageClicks() {
+    this.carouselArray.forEach((el) => {
+      el.addEventListener('click', () => {
+        const targetIndex = this.carouselArray.indexOf(el);
+        const currentIndex = 1; // The center image index
+        const moves = targetIndex - currentIndex;
+        
+        // Move the target image to the center
+        if (moves > 0) {
+          // Move right
+          for (let j = 0; j < moves; j++) {
+            this.carouselArray.push(this.carouselArray.shift());
+          }
+        } else {
+          // Move left
+          for (let j = 0; j < Math.abs(moves); j++) {
+            this.carouselArray.unshift(this.carouselArray.pop());
+          }
+        }
+        
+        this.updateGallery();
+        this.stopAutoplay(); // Stop autoplay when an image is clicked
+      });
+    });
+  }
+  
+  autoplayGallery() {
+    if (this.isAutoPlaying) {
+      this.autoPlayInterval = setInterval(() => {
+        this.setCurrentState({ className: 'gallery-controls-next' });
+      }, 3000);
+    }
+  }
+
+  stopAutoplay() {
+    if (this.isAutoPlaying) {
+      clearInterval(this.autoPlayInterval);
+      this.isAutoPlaying = false;
+    }
+  }
+
+  start() {
+    this.setControls();
+    this.useControls();
+    this.useImageClicks();
+    this.updateGallery();
+    this.autoplayGallery();
   }
 }
 
 const exampleCarousel = new Carousel(galleryContainer, galleryItems, galleryControls);
 
-exampleCarousel.setControls();
-exampleCarousel.useControls();
+// Start the carousel
+exampleCarousel.start();
