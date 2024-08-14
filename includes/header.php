@@ -7,12 +7,10 @@
     <link rel="stylesheet" href="css/style.css">
 </head>
 <body>
-    <div id="header" class="container">
-        <nav >
-            <ul class="nav_links nav_left">
-                <li><a href="#" class="logo">Rosalyn Wimberly</a></li>
-            </ul>
-            <ul class="nav_links nav_right">
+    <div class="header">
+        <nav class="nav-container">
+            <a href="#"class="nav-links nav-left logo">Rosalyn Wimberly</a>
+            <ul class="nav-links nav-right">
                 <li>About</li>
                 <li>Contact</li>
             </ul>
