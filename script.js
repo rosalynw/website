@@ -29,14 +29,14 @@ class Carousel {
     this.updateGallery();
   }
 
-  setControls() {
-    this.carouselControls.forEach(control => {
-      const controlButton = document.createElement('button');
-      controlButton.className = `gallery-controls-${control}`;
-      controlButton.innerText = control;
-      galleryControlsContainer.appendChild(controlButton);
-    });
-  }
+  // setControls() {
+  //   this.carouselControls.forEach(control => {
+  //     const controlButton = document.createElement('button');
+  //     controlButton.className = `gallery-controls-${control}`;
+  //     controlButton.innerText = control;
+  //     galleryControlsContainer.appendChild(controlButton);
+  //   });
+  // }
 
   useControls() {
     const triggers = [...galleryControlsContainer.childNodes];
@@ -91,7 +91,7 @@ class Carousel {
   }
 
   start() {
-    this.setControls();
+    //this.setControls();
     this.useControls();
     this.useImageClicks();
     this.updateGallery();
@@ -103,3 +103,23 @@ const exampleCarousel = new Carousel(galleryContainer, galleryItems, galleryCont
 
 // Start the carousel
 exampleCarousel.start();
+
+
+//Code Typewriter effect
+const codeText = `function hellowWorld() {
+  console.log("Hello, Whorld!");
+}
+  
+helloWorld();`;
+
+let i = 0;
+const speed = 50;
+function typeWriter() {
+  if (i < codeText.length) {
+    document.getElementById("code-text").innerHTML += codeText.charAt(i);
+    i++;
+    setTimeout(typeWriter, speed);
+  }
+}
+
+document.addEventListener("DOMContentLoaded", typeWriter);
